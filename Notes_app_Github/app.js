@@ -1,5 +1,4 @@
 require('dotenv').config();
-
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
 const methodOverride = require("method-override");
@@ -18,8 +17,6 @@ app.use(session({
   store: MongoStore.create({
     mongoUrl: process.env.MONGODB_URI
   }),
-  //cookie: { maxAge: new Date ( Date.now() + (3600000) ) } 
-  // Date.now() - 30 * 24 * 60 * 60 * 1000
 }));
 
 app.use(passport.initialize());
@@ -48,7 +45,6 @@ app.use('/', require('./server/routes/dashboard'));
 
 // Handle 404
 app.get('*', function(req, res) {
-  //res.status(404).send('404 Page Not Found.')
   res.status(404).render('404');
 })
 
